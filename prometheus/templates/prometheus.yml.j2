@@ -10,3 +10,11 @@
     - {{ hostvars[host]['ansible_host'] }}:9100
 {% endfor %}
 {% endif %}
+
+rule_files:
+  - alert.rules.yml
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - 'localhost:9093'
